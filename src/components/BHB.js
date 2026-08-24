@@ -15,7 +15,6 @@ export const authstore = reactive({
   },
 })
 
-// Todo: would be great to get username, password and apikey directly from App
 export async function BHBFetch(path, params) {
 
   const body_json = { 'api_key': authstore.apikey, ...params }
