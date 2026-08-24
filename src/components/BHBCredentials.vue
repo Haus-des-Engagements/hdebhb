@@ -1,11 +1,8 @@
-<script setup>
-</script>
-
 <template>
   <form @submit.prevent="setCreds">
     <div class="form-group">
-      <label for="username">Username</label>
-      <input type="text" class="form-control" id="username" v-model="username" placeholder="Username">
+      <label for="usernameinput">Username</label>
+      <input type="text" class="form-control" id="usernameinput" v-model="username" placeholder="Username">
     </div>
     <div class="form-group">
       <label for="password">Password</label>
@@ -18,3 +15,24 @@
     <button type="submit" class="btn btn-primary">OK</button>
   </form>
 </template>
+
+<script setup>
+import { authstore } from './BHB.js'
+</script>
+
+<script>
+export default {
+  data() {
+    return {
+      username: '',
+      password: '',
+      apikey: '',
+    }
+  },
+  methods: {
+    setCreds: function() {
+      authstore.setauth(this.username, this.password, this.apikey)
+    },
+  }
+}
+</script>

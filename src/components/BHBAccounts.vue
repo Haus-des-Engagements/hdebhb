@@ -36,8 +36,6 @@ export default {
 	
 	this.accounts = j.data;
 
-	console.log(this.accounts);
-
       } catch (error) {
 	this.error = error.message;
 	console.error('Error fetching users:', error);

@@ -1,11 +1,30 @@
-export async function BHBFetch(path, params) {
-  const body_json = { 'api_key': '...', ...params }
+import { reactive } from 'vue'
 
-  const response = await fetch('https://...' + path, {
+export const authstore = reactive({
+  username: 'username init',
+  password: 'password init',
+  apikey: 'apikey init',
+  valid: false,
+
+  setauth: function(u, p, a) {
+    this.username = u
+    this.password = p
+    this.apikey = a
+
+    this.valid = true
+  },
+})
+
+// Todo: would be great to get username, password and apikey directly from App
+export async function BHBFetch(path, params) {
+
+  const body_json = { 'api_key': authstore.apikey, ...params }
+
+  const response = await fetch('.../bhb/v1' + path, {
     method: 'POST',
     headers: {
-      'Authorization': 'Basic ' + btoa("..."),
-      'Content-Type': 'application/json'
+      'Authorization': 'Basic ' + btoa(authstore.username + ':' + authstore.password),
+      'Content-Type': 'application/json',
     },
     body: JSON.stringify(body_json)
   });

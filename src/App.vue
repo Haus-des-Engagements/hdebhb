@@ -1,5 +1,6 @@
 <script>
 import { ref } from 'vue'
+import { authstore } from './components/BHB.js'
 
 import BHBAccounts from './components/BHBAccounts.vue'
 import BHBReceipts from './components/BHBReceipts.vue'
@@ -19,27 +20,21 @@ export default {
   data() {
     return {
       currentPath: window.location.hash,
-      validcredentials: true,
     }
   },
   computed: {
     currentView() {
-      if (this.validcredentials) {
+      if (authstore.valid) {
 	return routes[this.currentPath.slice(1) || '/'] || BHBAccounts
       } else {
 	return BHBCredentials
       }
     }
   },
-  provide: {
-      username: 'sajfd',
-      password: '',
-      apikey: ''
-  },
   mounted() {
     window.addEventListener('hashchange', () => {
-		  this.currentPath = window.location.hash
-		})
+      this.currentPath = window.location.hash
+    })
   }
 }
 </script>
