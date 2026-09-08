@@ -2,11 +2,11 @@
   <form>
     <div class="form-group">
       <label for="date_from">date_from</label>
-      <input type="date" value="2026-08-01" id="date_from" v-model="date_from" @change="fetchPostings"/>
+      <input type="date" value="2026-09-01" id="date_from" v-model="date_from" @change="fetchPostings"/>
     </div>
     <div class="form-group">
       <label for="date_to">date_to</label>
-      <input type="date" value="2026-08-31" id="date_to" v-model="date_to" @change="fetchPostings"/>
+      <input type="date" value="2026-09-30" id="date_to" v-model="date_to" @change="fetchPostings"/>
     </div>
   </form>
   <h1>Postings</h1>
@@ -21,7 +21,9 @@
 	<th scope="col">currency</th>
 	<th scope="col">postingtext</th>
 	<th scope="col">debit_postingaccount_number</th>
+	<th scope="col">debit_postingaccount_name</th>
 	<th scope="col">credit_postingaccount_number</th>
+	<th scope="col">credit_postingaccount_name</th>
 	<th scope="col">transaction_purpose</th>
       </tr>
     </thead>
@@ -35,7 +37,9 @@
 	<td>{{ p.currency }}</td>
 	<td>{{ p.postingtext }}</td>
 	<td>{{ p.debit_postingaccount_number }}</td>
+	<td>{{ p.debit_postingaccount_name }}</td>
 	<td>{{ p.credit_postingaccount_number }}</td>
+	<td>{{ p.credit_postingaccount_name }}</td>
 	<td>{{ p.transaction_purpose }}</td>
       </tr>
     </tbody>
@@ -63,10 +67,34 @@ export default {
       this.error = null;
 
       try {
-	const j = await BHBFetch('/postings/get', { 'date_from': this.date_from, 'date_to': this.date_to });
+	const pp = BHBFetch('/postings/get', { 'date_from': this.date_from, 'date_to': this.date_to });
+	const ppa = BHBFetch('/settings/get/postingaccounts');
+	const pa = BHBFetch('/accounts/get');
 
-	console.log(j.data)
-	this.postings = j.data;
+	const all = await Promise.all([pp, ppa, pa])
+
+	const postings = all[0]
+	const globalaccounts = all[1]
+	const accounts = all[2]
+
+	const accountmap = new Map()
+	accounts.data.forEach((a) => {
+		accountmap.set(a.postingaccount_number, a.name)
+	})
+	globalaccounts.data.forEach((a) => {
+		accountmap.set(a.postingaccount_number, a.name)
+	})
+
+	this.postings = postings.data
+
+	postings.data.forEach((p) => {
+		if (accountmap.has(p.debit_postingaccount_number)) {
+			p.debit_postingaccount_name = accountmap.get(p.debit_postingaccount_number);
+		}
+		if (accountmap.has(p.credit_postingaccount_number)) {
+			p.credit_postingaccount_name = accountmap.get(p.credit_postingaccount_number);
+		}
+	})
 
       } catch (error) {
 	this.error = error.message;
