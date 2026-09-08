@@ -19,7 +19,7 @@ export async function BHBFetch(path, params) {
 
   const body_json = { 'api_key': authstore.apikey, ...params }
 
-  const response = await fetch('.../bhb/v1' + path, {
+  const response = await fetch('/api/v1' + path, {
     method: 'POST',
     headers: {
       'Authorization': 'Basic ' + btoa(authstore.username + ':' + authstore.password),
