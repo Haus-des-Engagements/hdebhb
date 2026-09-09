@@ -3,6 +3,7 @@ import { ref } from 'vue'
 import { authstore } from './components/BHB.js'
 
 import BHBAccounts from './components/BHBAccounts.vue'
+import BHBPostingAccounts from './components/BHBPostingAccounts.vue'
 import BHBReceipts from './components/BHBReceipts.vue'
 import BHBTransactions from './components/BHBTransactions.vue'
 import BHBPostings from './components/BHBPostings.vue'
@@ -11,6 +12,7 @@ import BHBCredentials from './components/BHBCredentials.vue'
 const routes = {
  '/': BHBTransactions,
  '/accounts': BHBAccounts,
+ '/postingaccounts': BHBPostingAccounts,
  '/receipts': BHBReceipts,
  '/transactions': BHBTransactions,
  '/postings': BHBPostings,
