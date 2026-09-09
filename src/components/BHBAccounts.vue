@@ -33,7 +33,7 @@ export default {
 
       try {
 	const j = await BHBFetch('/accounts/get');
-	
+
 	this.accounts = j.data;
 
       } catch (error) {
