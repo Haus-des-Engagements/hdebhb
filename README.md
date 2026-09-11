@@ -10,6 +10,23 @@ your favourite spreadsheet editor for further evaluation.
 The project is independent of the creator of BuchhaltungsButler, so don't
 expect support from their side when using hdebhb.
 
+## Deployment
+
+hdebhb needs a webserver for the static files and a proxy to
+https://app.buchhaltungsbutler.de/api/. The latter is needed because browsers
+refuse to access app.buchhaltungsbutler.de for javascript code provided by a
+different domain.
+
+See the `examples/` directory for a possible nginx configuration.
+
+To generate the static files, run
+
+```
+npm run build
+```
+
+and then sync the files below `dist` to your server root.
+
 ## Documentation
 
 The official API documentation can be found at
