@@ -1,38 +1,29 @@
 # hdebhb
 
-This template should help get you started developing with Vue 3 in Vite.
+hdebhb is a project accessing the rest-like API of
+[BuchhaltungsButler](https://www.buchhaltungsbutler.de/) to extract some views
+that are not provided in their own web interface.
 
-## Recommended IDE Setup
+The idea is to have the views in a format that allows easy cut'n'paste into
+your favourite spreadsheet editor for further evaluation.
 
-[VS Code](https://code.visualstudio.com/) + [Vue (Official)](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur).
+The project is independent of the creator of BuchhaltungsButler, so don't
+expect support from their side when using hdebhb.
 
-## Recommended Browser Setup
+## Documentation
 
-- Chromium-based browsers (Chrome, Edge, Brave, etc.):
-  - [Vue.js devtools](https://chromewebstore.google.com/detail/vuejs-devtools/nhdogjmejiglipccpnnnanhbledajbpd)
-  - [Turn on Custom Object Formatter in Chrome DevTools](http://bit.ly/object-formatters)
-- Firefox:
-  - [Vue.js devtools](https://addons.mozilla.org/en-US/firefox/addon/vue-js-devtools/)
-  - [Turn on Custom Object Formatter in Firefox DevTools](https://fxdx.dev/firefox-devtools-custom-object-formatters/)
+The official API documentation can be found at
+https://app.buchhaltungsbutler.de/docs/api/v1/.
 
-## Customize configuration
+## License
 
-See [Vite Configuration Reference](https://vite.dev/config/).
+hdebhb is free software: you can redistribute it and/or modify it under the
+terms of the GNU Affero General Public License version 3 as published by the
+Free Software Foundation
 
-## Project Setup
+This program is distributed in the hope that it will be useful, but WITHOUT ANY
+WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A
+PARTICULAR PURPOSE. See the GNU Affero General Public License for more details.
 
-```sh
-npm install
-```
-
-### Compile and Hot-Reload for Development
-
-```sh
-npm run dev
-```
-
-### Compile and Minify for Production
-
-```sh
-npm run build
-```
+You should have received a copy of the GNU Affero General Public License along with
+this program. If not, see <https://www.gnu.org/licenses/>.
