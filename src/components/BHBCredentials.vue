@@ -7,12 +7,12 @@ SPDX-License-Identifier: AGPL-3.0-only
 <template>
   <form @submit.prevent="setCreds">
     <div class="form-group">
-      <label for="usernameinput">Username</label>
-      <input type="text" class="form-control" id="usernameinput" v-model="authstate.username" placeholder="Username">
+      <label for="usernameinput">API Client</label>
+      <input type="text" class="form-control" id="usernameinput" v-model="authstate.username" placeholder="API Client">
     </div>
     <div class="form-group">
-      <label for="password">Password</label>
-      <input type="password" class="form-control" id="password" v-model="authstate.password" placeholder="Password">
+      <label for="password">API Secret</label>
+      <input type="password" class="form-control" id="password" v-model="authstate.password" placeholder="API Secret">
     </div>
     <div class="form-group">
       <label for="apikey">APIKey</label>
