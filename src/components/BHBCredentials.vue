@@ -15,7 +15,7 @@ SPDX-License-Identifier: AGPL-3.0-only
       <input type="password" class="form-control" id="password" v-model="authstate.password" placeholder="API Secret">
     </div>
     <div class="form-group">
-      <label for="apikey">APIKey</label>
+      <label for="apikey">API Key</label>
       <input type="password" class="form-control" id="apikey" v-model="authstate.apikey" placeholder="APIKey">
     </div>
     <button type="submit" class="btn btn-primary">OK</button>
