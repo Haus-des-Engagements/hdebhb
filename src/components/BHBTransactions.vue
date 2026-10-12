@@ -19,7 +19,7 @@ SPDX-License-Identifier: AGPL-3.0-only
     </thead>
     <tbody>
       <tr v-for="t in transactions">
-	<td>{{ t.amount}}</td>
+	<td>{{ t.amount }}</td>
 	<td>{{ t.id_by_customer }}</td>
 	<td>{{ t.to_from }}</td>
 	<td>{{ t.booking_date }}</td>
