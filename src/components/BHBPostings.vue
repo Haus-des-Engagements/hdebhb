@@ -30,6 +30,7 @@ SPDX-License-Identifier: AGPL-3.0-only
 	<th scope="col">debit_postingaccount_name</th>
 	<th scope="col">credit_postingaccount_number</th>
 	<th scope="col">credit_postingaccount_name</th>
+	<th scope="col">transaction_id</th>
 	<th scope="col">transaction_purpose</th>
       </tr>
     </thead>
@@ -46,6 +47,7 @@ SPDX-License-Identifier: AGPL-3.0-only
 	<td>{{ p.debit_postingaccount_name }}</td>
 	<td>{{ p.credit_postingaccount_number }}</td>
 	<td>{{ p.credit_postingaccount_name }}</td>
+	<td>{{ p.transaction_id_by_customer }}</td>
 	<td>{{ p.transaction_purpose }}</td>
       </tr>
     </tbody>
