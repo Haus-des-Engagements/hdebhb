@@ -19,7 +19,7 @@ SPDX-License-Identifier: AGPL-3.0-only
   <table class="table table-hover table-striped">
     <thead>
       <tr>
-	<th scope="col">id_by_customer</th>
+	<th scope="col">id</th>
 	<th scope="col">date</th>
 	<th scope="col">cost_location</th>
 	<th scope="col">credit_type</th>

@@ -10,7 +10,7 @@ SPDX-License-Identifier: AGPL-3.0-only
     <thead>
       <tr>
 	<th>amount</th>
-	<th>id_by_customer</th>
+	<th>id</th>
 	<th>to_from</th>
 	<th>booking_date</th>
 	<th>value_date</th>
