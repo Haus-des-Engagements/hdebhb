@@ -14,6 +14,15 @@ SPDX-License-Identifier: AGPL-3.0-only
       <label for="date_to">date_to</label>
       <input type="date" value="2026-09-30" id="date_to" v-model="date_to" @change="fetchPostings"/>
     </div>
+    <div class="form-group">
+      <label for="cost-location-filter">cost-location</label>
+      <select id="cost-location-filter" v-model="cost_location_filter" @change="update">
+        <option value="">all</option>
+	<template v-for="cl in cost_locations">
+	<option :value="cl">{{ cl }}</option>
+	</template>
+      </select>
+    </div>
   </form>
   <h1>Postings</h1>
   <table class="table table-hover table-striped">
@@ -35,7 +44,7 @@ SPDX-License-Identifier: AGPL-3.0-only
       </tr>
     </thead>
     <tbody>
-      <tr v-for="p in postings">
+      <tr v-for="p in filtered_postings">
 	<td>{{ p.id_by_customer }}</td>
 	<td>{{ p.date }}</td>
 	<td>{{ p.cost_location }}</td>
@@ -64,12 +73,31 @@ import { BHBFetch } from './BHB.js'
 export default {
   data() {
     return {
+      cost_locations: [],
+      cost_location_filter: '',
+      filtered_postings: [ ],
       postings: [ ],
       date_from: ref('2026-08-01'),
       date_to: ref('2026-08-31'),
     }
   },
   methods: {
+    update() {
+      var cost_locations = [];
+
+      this.filtered_postings = [];
+      this.postings.forEach((element) => {
+	if (element.cost_location && !cost_locations.includes(element.cost_location)) {
+	  cost_locations.push(element.cost_location);
+	}
+
+	if (this.cost_location_filter === '' || this.cost_location_filter == element.cost_location) {
+	  this.filtered_postings.push(element);
+	}
+      });
+      cost_locations.sort();
+      this.cost_locations = cost_locations;
+    },
     async fetchPostings() {
       this.loading = true;
       this.error = null;
@@ -110,6 +138,7 @@ export default {
       } finally {
 	this.loading = false;
       }
+      this.update();
     }
   },
   mounted() {
