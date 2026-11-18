@@ -6,6 +6,7 @@ SPDX-License-Identifier: AGPL-3.0-only
 
 <template>
   <h1>PostingAccounts</h1>
+  <div class="overflow-auto flex-shrink-1">
   <table class="table table-hover table-striped">
     <thead>
       <tr>
@@ -28,6 +29,7 @@ SPDX-License-Identifier: AGPL-3.0-only
     </tr>
     </tbody>
   </table>
+  </div>
 </template>
 
 <script setup>
